@@ -490,12 +490,12 @@ func loadConfig() (*config, error) {
 	case cfg.DisableListen && (cfg.Tor.V2 || cfg.Tor.V3):
 		return nil, errors.New("listening must be enabled when " +
 			"enabling inbound connections over Tor")
-	case cfg.Tor.Active && (!cfg.Tor.V2 && !cfg.Tor.V3):
+	//case cfg.Tor.Active && (!cfg.Tor.V2 && !cfg.Tor.V3):
 		// If an onion service version wasn't selected, we'll assume the
 		// user is only interested in outbound connections over Tor.
 		// Therefore, we'll disable listening in order to avoid
 		// inadvertent leaks.
-		cfg.DisableListen = true
+		//cfg.DisableListen = true
 	}
 
 	if cfg.Tor.PrivateKeyPath == "" {
